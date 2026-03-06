@@ -1,0 +1,16 @@
+# Environment & secrets
+.env
+credentials.json
+token.json
+
+# Database & temp files
+.tmp/
+*.db
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
