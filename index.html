@@ -20,7 +20,7 @@
             --sans:         'Lato', sans-serif;
         }
 
-        html, body { height: 100%; overflow: hidden; }
+        html, body { min-height: 100%; }
         body { font-family: var(--sans); color: var(--text-dk); background: var(--cream); }
 
         /* ── NAV ── */
@@ -147,6 +147,73 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ── Contact strip ── */
+        #contact {
+            background: var(--cream);
+            padding: 7rem 4rem;
+        }
+
+        .contact-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            align-items: flex-start;
+        }
+
+        .contact-card {
+            flex: 1;
+            padding: 0 3rem;
+        }
+
+        .contact-card:first-child { padding-left: 0; }
+        .contact-card:last-child  { padding-right: 0; }
+
+        .contact-tag {
+            font-size: 0.58rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 1.35rem;
+            line-height: 1.3;
+            color: var(--text-dk);
+            margin-bottom: 1rem;
+        }
+
+        .contact-body {
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: #6B4C35;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-link {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .contact-link:hover { color: var(--terracotta-dk); }
+
+        .contact-divider {
+            width: 1px;
+            align-self: stretch;
+            background: rgba(139,101,71,0.15);
+            flex-shrink: 0;
+        }
+
         /* ── Mobile ── */
         @media (max-width: 768px) {
             #navbar { padding: 1rem 1.5rem; }
@@ -154,6 +221,10 @@
             .hero-headline { font-size: 2.4rem; }
             .hero-cta { flex-direction: column; }
             .btn-primary, .btn-wa { justify-content: center; }
+            #contact { padding: 4rem 1.8rem; }
+            .contact-inner { flex-direction: column; gap: 3rem; }
+            .contact-card { padding: 0; }
+            .contact-divider { width: 100%; height: 1px; align-self: auto; }
         }
     </style>
 </head>
@@ -203,6 +274,38 @@
                 Chat on WhatsApp
             </a>
         </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT STRIP ═══════════════════════════════════════════════ -->
+<section id="contact">
+    <div class="contact-inner">
+
+        <div class="contact-card">
+            <div class="contact-tag">Careers</div>
+            <h3 class="contact-title">Join Us at the Ground Floor</h3>
+            <p class="contact-body">We're building an upcoming luxury wellness brand from the ground up — and we're looking for people who care deeply about what they do. If you're a creative, a strategist, a storyteller, or simply someone who believes in the power of mindful living, we'd love to hear from you. This is a rare chance to shape something meaningful before the world knows about it.</p>
+            <a href="mailto:careers@serenityyoga.in" class="contact-link">Apply Now →</a>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-card">
+            <div class="contact-tag">Community</div>
+            <h3 class="contact-title">Join the Serenity Circle</h3>
+            <p class="contact-body">Ready to begin or deepen your practice? Reach out to become part of our growing community of people choosing stillness, intention, and wellbeing.</p>
+            <a href="mailto:connect@serenityyoga.in" class="contact-link">Get Connected →</a>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-card">
+            <div class="contact-tag">Support</div>
+            <h3 class="contact-title">We're Here for You</h3>
+            <p class="contact-body">Have a question, a concern, or just need a hand? Our support team is always happy to help — reach out and we'll get back to you promptly.</p>
+            <a href="mailto:support@serenityyoga.in" class="contact-link">Get Help →</a>
+        </div>
+
     </div>
 </section>
 
