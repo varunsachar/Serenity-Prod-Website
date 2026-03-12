@@ -25,7 +25,7 @@
 
         /* ── NAV ── */
         #navbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            position: absolute; top: 0; left: 0; right: 0; z-index: 100;
             padding: 1.2rem 3.5rem;
             display: flex; align-items: center;
         }
@@ -207,6 +207,24 @@
 
         .contact-link:hover { color: var(--terracotta-dk); }
 
+        .contact-email {
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            color: rgba(107,76,53,0.5);
+            letter-spacing: 0.04em;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid rgba(139,101,71,0.12);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(107,76,53,0.4);
+        }
+
         .contact-divider {
             width: 1px;
             align-self: stretch;
@@ -251,7 +269,7 @@
             A space to <em>return</em><br>
             to yourself.
         </h1>
-        <p class="hero-sub">Yoga, breathwork and meditation with Varun.<br>Something beautiful is coming soon.</p>
+        <p class="hero-sub">Yoga, breathwork and meditation with Varun.</p>
 
         <div class="hero-cta">
             <!-- Book a call -->
@@ -286,6 +304,7 @@
             <h3 class="contact-title">Work That Means Something</h3>
             <p class="contact-body">Serenity is a luxury wellness brand built on intention — and we hold the same standard for the people behind it. We work with creatives, strategists, and storytellers who bring craft and purpose to everything they do. If that sounds like you, we'd love to be introduced.</p>
             <a href="mailto:careers@serenityyoga.in" class="contact-link">Apply Now →</a>
+            <div class="contact-email">careers@serenityyoga.in</div>
         </div>
 
         <div class="contact-divider"></div>
@@ -295,6 +314,7 @@
             <h3 class="contact-title">Join the Serenity Circle</h3>
             <p class="contact-body">Ready to begin or deepen your practice? Reach out to become part of our growing community of people choosing stillness, intention, and wellbeing.</p>
             <a href="mailto:connect@serenityyoga.in" class="contact-link">Get Connected →</a>
+            <div class="contact-email">connect@serenityyoga.in</div>
         </div>
 
         <div class="contact-divider"></div>
@@ -304,10 +324,16 @@
             <h3 class="contact-title">We're Here for You</h3>
             <p class="contact-body">Have a question, a concern, or just need a hand? Our support team is always happy to help — reach out and we'll get back to you promptly.</p>
             <a href="mailto:support@serenityyoga.in" class="contact-link">Get Help →</a>
+            <div class="contact-email">support@serenityyoga.in</div>
         </div>
 
     </div>
 </section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer>
+    © 2026 Serenity Yoga &amp; Meditation Centre &nbsp;·&nbsp; serenityyoga.in
+</footer>
 
 </body>
 </html>
