@@ -1,284 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serenity — Yoga, Breathwork & Meditation with Varun</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Yoga & Meditation Centre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --terracotta: #C4614A;
-      --gold:       #C9A96E;
-      --cream:      #FAF5EE;
-      --dark:       #2C1A10;
-      --mid:        #6B4C35;
-      --serif:      'Cormorant Garamond', Georgia, serif;
-      --sans:       'Lato', sans-serif;
-    }
+        :root {
+            --terracotta:   #C4614A;
+            --terracotta-dk:#A34A36;
+            --cream:        #FAF5EE;
+            --gold:         #C9A96E;
+            --text-dk:      #2C1A10;
+            --serif:        'Cormorant Garamond', Georgia, serif;
+            --sans:         'Lato', sans-serif;
+        }
 
-    html, body {
-      min-height: 100%;
-      background: var(--dark);
-      color: var(--cream);
-      font-family: var(--sans);
-      font-weight: 300;
-    }
+        html, body { height: 100%; overflow: hidden; }
+        body { font-family: var(--sans); color: var(--text-dk); background: var(--cream); }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(196,97,74,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 20% 20%, rgba(201,169,110,0.08) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
+        /* ── NAV ── */
+        #navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1.2rem 3.5rem;
+            display: flex; align-items: center;
+        }
+        .logo-link { display: flex; align-items: center; text-decoration: none; }
+        .logo-link img { height: 58px; width: auto; }
 
-    .wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem 6rem;
-      position: relative;
-      z-index: 1;
-      gap: 0;
-    }
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
 
-    /* ── Logo mark ── */
-    .logo-mark {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 2.5rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.2s ease forwards;
-    }
+        .hero-photo {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: 70% center;
+        }
 
-    /* ── Eyebrow ── */
-    .eyebrow {
-      font-size: 0.62rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 400;
-      margin-bottom: 1.4rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.4s ease forwards;
-    }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(20,8,2,0.78) 0%,
+                rgba(20,8,2,0.52) 40%,
+                rgba(20,8,2,0.18) 65%,
+                transparent 100%
+            );
+        }
 
-    /* ── Headline ── */
-    h1 {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      line-height: 1.15;
-      color: var(--cream);
-      margin-bottom: 1.6rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.6s ease forwards;
-    }
+        .hero-content {
+            position: relative; z-index: 2;
+            padding: 160px 4.5rem 6rem;
+            max-width: 620px;
+        }
 
-    h1 em { font-style: italic; color: var(--gold); }
+        .hero-eyebrow {
+            font-size: 0.62rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+            margin-bottom: 1.4rem;
+            animation: heroFadeUp 0.9s 0.2s ease both;
+        }
 
-    /* ── Subtext ── */
-    .sub {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      color: rgba(250,245,238,0.6);
-      line-height: 1.9;
-      max-width: 460px;
-      margin: 0 auto 2.8rem;
-      opacity: 0;
-      animation: fadeUp 1s 0.8s ease forwards;
-    }
+        .hero-headline {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            line-height: 1.12;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            animation: heroFadeUp 0.9s 0.45s ease both;
+        }
 
-    /* ── Divider ── */
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-      margin: 0 auto 2.8rem;
-      opacity: 0;
-      animation: fadeIn 1s 1s ease forwards;
-    }
+        .hero-headline em { font-style: italic; color: var(--gold); }
 
-    /* ── Status ── */
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.68rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: rgba(250,245,238,0.45);
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 1s 1.1s ease forwards;
-    }
+        .hero-sub {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 2.6rem;
+            animation: heroFadeUp 0.9s 0.65s ease both;
+        }
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      flex-shrink: 0;
-      animation: pulse 2.5s infinite;
-    }
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            animation: heroFadeUp 0.9s 0.85s ease both;
+        }
 
-    /* ── CTA buttons ── */
-    .ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      opacity: 0;
-      animation: fadeUp 1s 1.3s ease forwards;
-      margin-bottom: 2rem;
-    }
+        /* Primary button */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--terracotta);
+            color: #fff;
+            padding: 0.85rem 2rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover { background: var(--terracotta-dk); }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.9rem 2rem;
-      border: 1px solid rgba(201,169,110,0.4);
-      color: var(--gold);
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: background 0.3s, border-color 0.3s, color 0.3s;
-    }
+        /* WhatsApp button */
+        .btn-wa {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: transparent;
+            color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.35);
+            padding: 0.85rem 1.8rem;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: border-color 0.3s, color 0.3s, background 0.3s;
+        }
+        .btn-wa:hover {
+            border-color: #25d366;
+            color: #25d366;
+            background: rgba(37,211,102,0.08);
+        }
 
-    .btn:hover {
-      background: rgba(201,169,110,0.1);
-      border-color: var(--gold);
-      color: var(--cream);
-    }
+        /* ── Animations ── */
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-    .btn-wa {
-      background: rgba(37,211,102,0.08);
-      border-color: rgba(37,211,102,0.35);
-      color: #25d366;
-    }
-
-    .btn-wa:hover {
-      background: rgba(37,211,102,0.15);
-      border-color: #25d366;
-      color: #25d366;
-    }
-
-    /* ── Note ── */
-    .note {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: rgba(250,245,238,0.25);
-      opacity: 0;
-      animation: fadeIn 1s 1.6s ease forwards;
-    }
-
-    /* ── Footer ── */
-    .foot {
-      position: fixed;
-      bottom: 1.8rem;
-      left: 0; right: 0;
-      text-align: center;
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(250,245,238,0.15);
-      opacity: 0;
-      animation: fadeIn 1.2s 2s ease forwards;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(0.7); }
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 2.2rem; }
-      .ctas { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 280px; justify-content: center; }
-    }
-  </style>
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            #navbar { padding: 1rem 1.5rem; }
+            .hero-content { padding: 140px 1.8rem 4rem; }
+            .hero-headline { font-size: 2.4rem; }
+            .hero-cta { flex-direction: column; }
+            .btn-primary, .btn-wa { justify-content: center; }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
 
-    <svg class="logo-mark" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <line x1="128" y1="162" x2="128" y2="196" stroke="#A8843C" stroke-width="5" stroke-linecap="round"/>
-      <ellipse cx="97" cy="182" rx="36" ry="11" transform="rotate(-18 97 182)" fill="#A8843C"/>
-      <ellipse cx="159" cy="182" rx="36" ry="11" transform="rotate(18 159 182)" fill="#A8843C"/>
-      <ellipse cx="74" cy="145" rx="13" ry="37" transform="rotate(-54 74 145)" fill="#6B4C1E"/>
-      <ellipse cx="182" cy="145" rx="13" ry="37" transform="rotate(54 182 145)" fill="#6B4C1E"/>
-      <ellipse cx="90" cy="128" rx="17" ry="46" transform="rotate(-33 90 128)" fill="#C9A96E"/>
-      <ellipse cx="166" cy="128" rx="17" ry="46" transform="rotate(33 166 128)" fill="#C9A96E"/>
-      <ellipse cx="109" cy="113" rx="15" ry="44" transform="rotate(-14 109 113)" fill="#DBC07E"/>
-      <ellipse cx="147" cy="113" rx="15" ry="44" transform="rotate(14 147 113)" fill="#DBC07E"/>
-      <ellipse cx="128" cy="104" rx="19" ry="54" fill="#FAF5EE"/>
-      <circle cx="128" cy="152" r="15" fill="#C9A96E"/>
-      <circle cx="128" cy="152" r="7" fill="#FAF5EE"/>
-    </svg>
+<!-- ══ NAV ═══════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+    <a href="#" class="logo-link">
+        <img src="brand_assets/Serenity Logo.png" alt="Serenity Yoga & Meditation Centre">
+    </a>
+</nav>
 
-    <p class="eyebrow">Serenity · Yoga &amp; Meditation</p>
+<!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+<section id="hero">
+    <img src="Hero without text.png"
+         alt="Varun — Yoga, Breathwork & Meditation"
+         class="hero-photo" loading="eager">
+    <div class="hero-overlay"></div>
 
-    <h1>A space to breathe.<br>A space to <em>return</em><br>to yourself.</h1>
+    <div class="hero-content">
+        <div class="hero-eyebrow">Welcome to Serenity</div>
+        <h1 class="hero-headline">
+            A space to breathe.<br>
+            A space to <em>return</em><br>
+            to yourself.
+        </h1>
+        <p class="hero-sub">Yoga, breathwork and meditation with Varun.<br>Something beautiful is coming soon.</p>
 
-    <p class="sub">Yoga, breathwork and meditation with Varun.<br>Something beautiful is on its way.</p>
+        <div class="hero-cta">
+            <!-- Book a call -->
+            <a href="https://calendly.com/vsachar7" class="btn-primary" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Book a Free Call
+            </a>
 
-    <div class="divider"></div>
-
-    <div class="status">
-      <span class="status-dot"></span>
-      Coming Soon
+            <!-- WhatsApp -->
+            <a href="https://wa.me/918660021604?text=Hi%20Varun!%20I%27d%20love%20to%20know%20more%20about%20Serenity."
+               class="btn-wa" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Chat on WhatsApp
+            </a>
+        </div>
     </div>
+</section>
 
-    <div class="ctas">
-      <!-- Book a 30-min call -->
-      <a href="https://calendly.com/vsachar7"
-         class="btn" target="_blank" rel="noopener">
-        <!-- Calendar icon -->
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-        Book a 30-Min Call
-      </a>
-
-      <!-- WhatsApp -->
-      <a href="https://wa.me/918660021604?text=Hi%20Varun!%20I%27d%20love%20to%20know%20more%20about%20Serenity."
-         class="btn btn-wa" target="_blank" rel="noopener">
-        <!-- WhatsApp icon -->
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-
-    <p class="note">Yoga · Breathwork · Meditation</p>
-
-  </div>
-
-  <p class="foot">serenityyoga.in</p>
 </body>
 </html>
