@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.2" baseProfile="tiny"
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 256 256"
+     width="256" height="256">
+
+  <!-- Solid background -->
+  <rect width="256" height="256" fill="#2C1A10"/>
+
+  <!-- Stem -->
+  <line x1="128" y1="162" x2="128" y2="196"
+        stroke="#A8843C" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Base leaves -->
+  <ellipse cx="97" cy="182" rx="36" ry="11"
+           transform="rotate(-18 97 182)" fill="#A8843C"/>
+  <ellipse cx="159" cy="182" rx="36" ry="11"
+           transform="rotate(18 159 182)" fill="#A8843C"/>
+
+  <!-- Far outer petals -->
+  <ellipse cx="74" cy="145" rx="13" ry="37"
+           transform="rotate(-54 74 145)" fill="#8B6B2E"/>
+  <ellipse cx="182" cy="145" rx="13" ry="37"
+           transform="rotate(54 182 145)" fill="#8B6B2E"/>
+
+  <!-- Main outer petals -->
+  <ellipse cx="90" cy="128" rx="17" ry="46"
+           transform="rotate(-33 90 128)" fill="#C9A96E"/>
+  <ellipse cx="166" cy="128" rx="17" ry="46"
+           transform="rotate(33 166 128)" fill="#C9A96E"/>
+
+  <!-- Inner petals -->
+  <ellipse cx="109" cy="113" rx="15" ry="44"
+           transform="rotate(-14 109 113)" fill="#DBC07E"/>
+  <ellipse cx="147" cy="113" rx="15" ry="44"
+           transform="rotate(14 147 113)" fill="#DBC07E"/>
+
+  <!-- Center petal -->
+  <ellipse cx="128" cy="104" rx="19" ry="54" fill="#FAF5EE"/>
+
+  <!-- Stamen outer -->
+  <circle cx="128" cy="152" r="15" fill="#C9A96E"/>
+  <!-- Stamen inner -->
+  <circle cx="128" cy="152" r="7" fill="#FAF5EE"/>
+
+</svg>
