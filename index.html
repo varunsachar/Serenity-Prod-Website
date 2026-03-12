@@ -14,14 +14,48 @@
             --terracotta:   #C4614A;
             --terracotta-dk:#A34A36;
             --cream:        #FAF5EE;
+            --cream-warm:   #F5EDE0;
             --gold:         #C9A96E;
+            --gold-lt:      #E8C88A;
+            --brown:        #8B6547;
+            --brown-dk:     #3D2B1F;
             --text-dk:      #2C1A10;
+            --text-mid:     #6B4C35;
+            --text-lt:      #9A7A65;
             --serif:        'Cormorant Garamond', Georgia, serif;
             --sans:         'Lato', sans-serif;
         }
 
-        html, body { min-height: 100%; }
-        body { font-family: var(--sans); color: var(--text-dk); background: var(--cream); }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); color: var(--text-dk); background: var(--cream); overflow-x: hidden; }
+
+        /* ── Scroll reveal ── */
+        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
+        .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+        /* ── Shared ── */
+        .label {
+            display: block; font-size: 0.68rem; letter-spacing: 0.38em;
+            text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.9rem;
+        }
+        .heading {
+            font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 400; color: var(--text-dk); line-height: 1.18;
+        }
+        .ornament { display: flex; align-items: center; gap: 0.85rem; margin: 1.4rem 0; }
+        .ornament::before, .ornament::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.38; }
+
+        /* ── Buttons ── */
+        .btn-primary {
+            display: inline-block; background: var(--terracotta); color: white;
+            padding: 0.9rem 2.4rem; font-family: var(--sans); font-weight: 700;
+            font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+            text-decoration: none; border-radius: 2px; border: 2px solid var(--terracotta);
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background: transparent; color: var(--terracotta); }
 
         /* ── NAV ── */
         #navbar {
@@ -32,7 +66,7 @@
         .logo-link { display: flex; align-items: center; text-decoration: none; }
         .logo-link img { height: 58px; width: auto; }
 
-        /* ── HERO ── */
+        /* ── Hero ── */
         #hero {
             min-height: 100vh;
             position: relative;
@@ -40,206 +74,179 @@
             display: flex;
             align-items: center;
         }
-
         .hero-photo {
             position: absolute; inset: 0;
             width: 100%; height: 100%;
-            object-fit: cover;
-            object-position: 70% center;
+            object-fit: cover; object-position: 70% center;
         }
-
         .hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(
-                to right,
-                rgba(20,8,2,0.78) 0%,
-                rgba(20,8,2,0.52) 40%,
-                rgba(20,8,2,0.18) 65%,
-                transparent 100%
-            );
+            background: linear-gradient(to right, rgba(20,8,2,0.78) 0%, rgba(20,8,2,0.52) 40%, rgba(20,8,2,0.18) 65%, transparent 100%);
         }
-
         .hero-content {
             position: relative; z-index: 2;
-            padding: 160px 4.5rem 6rem;
-            max-width: 620px;
+            padding: 160px 4.5rem 6rem; max-width: 620px;
         }
-
         .hero-eyebrow {
-            font-size: 0.62rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 400;
-            margin-bottom: 1.4rem;
-            animation: heroFadeUp 0.9s 0.2s ease both;
+            display: flex; align-items: center; gap: 0.8rem;
+            font-size: 0.68rem; letter-spacing: 0.42em; text-transform: uppercase;
+            color: var(--gold); font-weight: 700; margin-bottom: 2rem;
+            animation: heroFadeUp 0.8s ease both 0.15s;
         }
-
+        .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); flex-shrink: 0; }
         .hero-headline {
-            font-family: var(--serif);
-            font-weight: 300;
-            font-size: clamp(2.6rem, 5vw, 4rem);
-            line-height: 1.12;
-            color: #fff;
-            margin-bottom: 1.2rem;
-            animation: heroFadeUp 0.9s 0.45s ease both;
+            font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 5rem);
+            font-weight: 300; line-height: 1.08; color: white; margin-bottom: 1.4rem;
+            animation: heroFadeUp 0.9s ease both 0.35s;
         }
-
-        .hero-headline em { font-style: italic; color: var(--gold); }
-
+        .hero-headline em { font-style: italic; color: var(--gold-lt); font-weight: 400; }
         .hero-sub {
-            font-family: var(--serif);
-            font-style: italic;
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-            margin-bottom: 2.6rem;
-            animation: heroFadeUp 0.9s 0.65s ease both;
+            font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.72);
+            font-weight: 300; margin-bottom: 2.6rem;
+            animation: heroFadeUp 0.8s ease both 0.55s;
         }
-
         .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            animation: heroFadeUp 0.9s 0.85s ease both;
+            display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+            animation: heroFadeUp 0.8s ease both 0.7s;
         }
-
-        /* Primary button */
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: var(--terracotta);
-            color: #fff;
-            padding: 0.85rem 2rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 2px;
-            transition: background 0.3s;
-        }
-        .btn-primary:hover { background: var(--terracotta-dk); }
-
-        /* WhatsApp button */
         .btn-wa {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: transparent;
-            color: rgba(255,255,255,0.85);
+            background: transparent; color: rgba(255,255,255,0.85);
             border: 1px solid rgba(255,255,255,0.35);
-            padding: 0.85rem 1.8rem;
-            font-size: 0.7rem;
-            font-weight: 400;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 2px;
-            transition: border-color 0.3s, color 0.3s, background 0.3s;
+            padding: 0.85rem 1.8rem; font-size: 0.7rem; font-weight: 400;
+            letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+            border-radius: 2px; transition: border-color 0.3s, color 0.3s, background 0.3s;
         }
-        .btn-wa:hover {
-            border-color: #25d366;
-            color: #25d366;
-            background: rgba(37,211,102,0.08);
-        }
+        .btn-wa:hover { border-color: #25d366; color: #25d366; background: rgba(37,211,102,0.08); }
 
-        /* ── Animations ── */
         @keyframes heroFadeUp {
             from { opacity: 0; transform: translateY(24px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
-        /* ── Contact strip ── */
-        #contact {
-            background: var(--cream);
-            padding: 7rem 4rem;
+        @keyframes scrollBounce {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%     { transform: translateX(-50%) translateY(8px); }
         }
 
-        .contact-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0;
-            align-items: flex-start;
+        /* ── Founder ── */
+        #founder { padding: 9rem 4rem; background: var(--cream); }
+        .founder-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 7rem;
+            align-items: start; max-width: 1100px; margin: 0 auto;
         }
-
-        .contact-card {
-            flex: 1;
-            padding: 0 3rem;
+        .founder-image-wrap { position: relative; padding-bottom: 24px; padding-right: 24px; }
+        .founder-frame {
+            position: absolute; top: 24px; left: 24px; right: 0; bottom: 0;
+            border: 1.5px solid var(--gold); border-radius: 4px; opacity: 0.28; z-index: 0;
         }
+        .founder-image {
+            position: relative; z-index: 1; width: 100%; aspect-ratio: 3/4;
+            border-radius: 4px; overflow: hidden; background: #2C1A10;
+        }
+        .founder-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+        .founder-content { max-width: 550px; padding-top: 1rem; }
+        .founder-eyebrow {
+            font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase;
+            color: var(--gold); font-weight: 700; margin-bottom: 1.5rem;
+            display: flex; align-items: center; gap: 0.8rem;
+        }
+        .founder-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); flex-shrink: 0; }
+        .founder-name {
+            font-family: var(--serif); font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+            font-weight: 300; color: var(--text-dk); line-height: 1.1; margin-bottom: 1.8rem;
+        }
+        .founder-intro {
+            font-family: var(--serif); font-style: italic;
+            font-size: 1.08rem; line-height: 1.95; color: var(--text-mid); font-weight: 300;
+            border-left: 2px solid var(--gold); padding-left: 1.4rem; margin-bottom: 2.8rem;
+        }
+        .founder-section-head {
+            font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase;
+            color: var(--gold); font-weight: 700; margin-bottom: 0.85rem; margin-top: 2.5rem;
+        }
+        .founder-body {
+            font-size: 0.96rem; line-height: 2; color: var(--text-mid); font-weight: 300; margin-bottom: 1rem;
+        }
+        .founder-body strong { color: var(--text-dk); font-weight: 500; font-style: italic; font-family: var(--serif); font-size: 1.02rem; }
+        .founder-cta { margin-top: 3rem; }
 
+        /* ── Three Pillars ── */
+        #pillars { background: var(--cream-warm); padding: 6rem 4rem; }
+        .pillars-hdr { text-align: center; max-width: 640px; margin: 0 auto 4rem; }
+        .pillars-sub { color: var(--text-mid); font-size: 0.95rem; line-height: 1.85; font-weight: 300; margin-top: 1.2rem; }
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1180px; margin: 0 auto; }
+        .pillar-card { background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 20px rgba(44,26,16,0.07); }
+        .pillar-img { height: 220px; overflow: hidden; }
+        .pillar-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform 0.6s ease; display: block; }
+        .pillar-card:hover .pillar-img img { transform: scale(1.06); }
+        .pillar-body { padding: 1.8rem; }
+        .pillar-num {
+            font-size: 0.58rem; letter-spacing: 0.34em; text-transform: uppercase;
+            color: var(--gold); font-weight: 700; margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.55rem;
+        }
+        .pillar-num::before { content: ''; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0; }
+        .pillar-title { font-family: var(--serif); font-size: 1.45rem; color: var(--text-dk); font-weight: 400; line-height: 1.2; margin-bottom: 0.7rem; }
+        .pillar-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
+
+        /* ── About ── */
+        #about { padding: 8rem 4rem; background: var(--cream); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5.5rem; align-items: center; max-width: 1180px; margin: 0 auto; }
+        .about-image-wrap { position: relative; padding-bottom: 22px; padding-right: 22px; }
+        .about-frame { position: absolute; top: 22px; left: 22px; right: 0; bottom: 0; border: 1.5px solid var(--gold); border-radius: 4px; opacity: 0.35; z-index: 0; }
+        .about-image { position: relative; z-index: 1; width: 100%; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: #2C1A10; }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+        .about-image-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,255,255,0.12) 0%, transparent 55%); }
+        .about-badge {
+            position: absolute; bottom: -0.5rem; right: -0.5rem; z-index: 2;
+            background: var(--terracotta); color: white; width: 116px; height: 116px;
+            border-radius: 50%; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            box-shadow: 0 10px 32px rgba(196,97,74,0.35);
+        }
+        .badge-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 600; line-height: 1; }
+        .badge-text { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.35; margin-top: 2px; }
+        .about-content p { color: var(--text-mid); line-height: 1.9; margin-bottom: 1.2rem; font-weight: 300; font-size: 0.95rem; }
+        .about-stats { display: flex; gap: 2.2rem; margin: 2.2rem 0 0; flex-wrap: wrap; }
+        .stat { border-left: 2px solid var(--gold); padding-left: 1rem; }
+        .stat-num { font-family: var(--serif); font-size: 2.3rem; color: var(--terracotta); line-height: 1; }
+        .stat-lbl { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-lt); text-transform: uppercase; margin-top: 3px; }
+
+        /* ── Contact ── */
+        #contact { background: var(--cream-warm); padding: 7rem 4rem; }
+        .contact-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 0; align-items: flex-start; }
+        .contact-card { flex: 1; padding: 0 3rem; }
         .contact-card:first-child { padding-left: 0; }
         .contact-card:last-child  { padding-right: 0; }
-
-        .contact-tag {
-            font-size: 0.58rem;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .contact-title {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: 1.35rem;
-            line-height: 1.3;
-            color: var(--text-dk);
-            margin-bottom: 1rem;
-        }
-
-        .contact-body {
-            font-size: 0.88rem;
-            line-height: 1.9;
-            color: #6B4C35;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-link {
-            font-size: 0.68rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--terracotta);
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.2s;
-        }
-
-        .contact-link:hover { color: var(--terracotta-dk); }
-
+        .contact-tag { font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 1rem; }
+        .contact-title { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; line-height: 1.3; color: var(--text-dk); margin-bottom: 1rem; }
+        .contact-body { font-size: 0.88rem; line-height: 1.9; color: var(--text-mid); font-weight: 300; margin-bottom: 1.5rem; }
         .contact-email {
-            margin-top: 0.6rem;
-            font-size: 0.75rem;
-            color: rgba(107,76,53,0.5);
-            letter-spacing: 0.04em;
+            font-size: 0.8rem; color: var(--terracotta); letter-spacing: 0.04em;
+            font-weight: 400;
         }
+        .contact-divider { width: 1px; align-self: stretch; background: rgba(139,101,71,0.15); flex-shrink: 0; }
 
         /* ── Footer ── */
         footer {
-            text-align: center;
-            padding: 2.5rem 2rem;
+            text-align: center; padding: 2.5rem 2rem;
             border-top: 1px solid rgba(139,101,71,0.12);
-            font-size: 0.68rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(107,76,53,0.4);
-        }
-
-        .contact-divider {
-            width: 1px;
-            align-self: stretch;
-            background: rgba(139,101,71,0.15);
-            flex-shrink: 0;
+            font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+            color: rgba(107,76,53,0.4); background: var(--cream);
         }
 
         /* ── Mobile ── */
+        @media (max-width: 900px) {
+            .founder-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .pillars-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
             #navbar { padding: 1rem 1.5rem; }
             .hero-content { padding: 140px 1.8rem 4rem; }
             .hero-headline { font-size: 2.4rem; }
             .hero-cta { flex-direction: column; }
-            .btn-primary, .btn-wa { justify-content: center; }
-            #contact { padding: 4rem 1.8rem; }
+            #founder, #about { padding: 5rem 1.8rem; }
+            #pillars, #contact { padding: 4rem 1.8rem; }
             .contact-inner { flex-direction: column; gap: 3rem; }
             .contact-card { padding: 0; }
             .contact-divider { width: 100%; height: 1px; align-self: auto; }
@@ -257,11 +264,8 @@
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
 <section id="hero">
-    <img src="Hero without text.png"
-         alt="Varun — Yoga, Breathwork & Meditation"
-         class="hero-photo" loading="eager">
+    <img src="Hero without text.png" alt="Varun — Yoga, Breathwork & Meditation" class="hero-photo" loading="eager">
     <div class="hero-overlay"></div>
-
     <div class="hero-content">
         <div class="hero-eyebrow">Welcome to Serenity</div>
         <h1 class="hero-headline">
@@ -270,22 +274,14 @@
             to yourself.
         </h1>
         <p class="hero-sub">Yoga, breathwork and meditation with Varun.</p>
-
         <div class="hero-cta">
-            <!-- Book a call -->
             <a href="https://calendly.com/vsachar7" class="btn-primary" target="_blank" rel="noopener">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.3rem">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
                 </svg>
                 Book a Free Call
             </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/918660021604?text=Hi%20Varun!%20I%27d%20love%20to%20know%20more%20about%20Serenity."
-               class="btn-wa" target="_blank" rel="noopener">
+            <a href="https://wa.me/918660021604?text=Hi%20Varun!%20I%27d%20love%20to%20know%20more%20about%20Serenity." class="btn-wa" target="_blank" rel="noopener">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
@@ -295,38 +291,154 @@
     </div>
 </section>
 
-<!-- ══ CONTACT STRIP ═══════════════════════════════════════════════ -->
+<!-- ══ FOUNDER STORY ═════════════════════════════════════════════════ -->
+<section id="founder">
+    <div class="founder-grid">
+        <div class="founder-image-wrap reveal">
+            <div class="founder-frame"></div>
+            <div class="founder-image">
+                <img src="Meditation by the river bank.png" alt="Varun meditating by the river bank" loading="eager">
+            </div>
+        </div>
+        <div class="founder-content reveal d2">
+            <div class="founder-eyebrow">The Founder</div>
+            <h2 class="founder-name">Hi, I'm Varun.</h2>
+            <p class="founder-intro">
+                Serenity was created as a quiet space in a world that rarely slows down.
+                What began as a personal yoga and meditation practice slowly became something deeper —
+                a way of returning to stillness, clarity, and presence in everyday life.
+            </p>
+            <div class="founder-section-head">A Different Approach to Practice</div>
+            <p class="founder-body">In many places, wellness is treated as another thing to achieve or optimize.</p>
+            <p class="founder-body"><strong>Serenity is different.</strong></p>
+            <p class="founder-body">
+                Here, the intention is simple: to create space for the body to move, the breath to deepen,
+                and the mind to settle. Through yoga, breathwork, and meditation, these practices become
+                a way to reconnect with yourself — physically, mentally, and emotionally.
+            </p>
+            <div class="founder-section-head">Simple Practices. Real Transformation.</div>
+            <p class="founder-body">
+                You don't need extreme routines or complicated rituals. Often, a few minutes of conscious
+                breathing, mindful movement, or quiet meditation can completely change how the body feels
+                and how the mind responds to the day.
+            </p>
+            <p class="founder-body">Serenity is a place to explore these practices in a calm, accessible way.</p>
+            <div class="founder-section-head">An Invitation</div>
+            <p class="founder-body">
+                If you're looking for a space to slow down, breathe deeply, and return to a sense of
+                balance, you're welcome here.
+            </p>
+            <div class="founder-cta">
+                <a href="#pillars" class="btn-primary">Explore the Practices</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ THREE PILLARS ══════════════════════════════════════════════════ -->
+<section id="pillars">
+    <div class="pillars-hdr reveal">
+        <span class="label">The Three Pillars</span>
+        <h2 class="heading">Everything We Practice Together</h2>
+        <p class="pillars-sub">Three foundations of wellbeing — the heart of everything Serenity creates.</p>
+    </div>
+    <div class="pillars-grid">
+        <div class="pillar-card reveal d1">
+            <div class="pillar-img">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80" alt="Hatha Yoga" loading="lazy">
+            </div>
+            <div class="pillar-body">
+                <div class="pillar-num">01 · Hatha Yoga</div>
+                <h3 class="pillar-title">Postures, Breath &amp; Alignment</h3>
+                <p class="pillar-desc">Classical asanas to strengthen the body and steady the mind — accessible to every level of practitioner.</p>
+            </div>
+        </div>
+        <div class="pillar-card reveal d2">
+            <div class="pillar-img">
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80" alt="Guided Meditation" loading="lazy">
+            </div>
+            <div class="pillar-body">
+                <div class="pillar-num">02 · Guided Meditation</div>
+                <h3 class="pillar-title">Stillness for the Restless Mind</h3>
+                <p class="pillar-desc">Mindfulness and breathwork practices that restore deep inner calm — meeting you wherever you are.</p>
+            </div>
+        </div>
+        <div class="pillar-card reveal d3">
+            <div class="pillar-img">
+                <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=900&q=80" alt="Women's Healing" loading="lazy">
+            </div>
+            <div class="pillar-body">
+                <div class="pillar-num">03 · Women's Healing</div>
+                <h3 class="pillar-title">A Circle of Care &amp; Renewal</h3>
+                <p class="pillar-desc">Gentle restorative practices designed specifically for women's wellness, wholeness, and vitality.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ ABOUT ══════════════════════════════════════════════════════════ -->
+<section id="about">
+    <div class="about-grid">
+        <div class="about-image-wrap reveal">
+            <div class="about-frame"></div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=900&q=80" alt="Serene yoga practice">
+                <div class="about-image-overlay"></div>
+            </div>
+            <div class="about-badge">
+                <span class="badge-num">8+</span>
+                <span class="badge-text">Years of<br>Serenity</span>
+            </div>
+        </div>
+        <div class="about-content reveal d2">
+            <span class="label">Our Story</span>
+            <h2 class="heading">Nurturing Peace for Mind, Body &amp; Soul</h2>
+            <div class="ornament">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#C9A96E"><path d="M12 2C10.2 5.8 6.2 8 2 8c4.2 0 8.2 2.2 10 6 1.8-3.8 5.8-6 10-6-4.2 0-8.2-2.2-10-6z"/></svg>
+            </div>
+            <p>Discover a sanctuary of tranquillity where you can heal, restore, and grow. Our content is thoughtfully crafted to help you reduce stress, cultivate mindfulness, and find your inner peace.</p>
+            <p>Whether you're taking your very first yoga breath or deepening a long-standing practice, Varun shows up for you — with compassion, expertise, and genuine warmth.</p>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-num">100+</div>
+                    <div class="stat-lbl">Free Videos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">8+</div>
+                    <div class="stat-lbl">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">Weekly</div>
+                    <div class="stat-lbl">New Content</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════════════════════ -->
 <section id="contact">
     <div class="contact-inner">
-
-        <div class="contact-card">
+        <div class="contact-card reveal">
             <div class="contact-tag">Careers</div>
             <h3 class="contact-title">Work That Means Something</h3>
             <p class="contact-body">Serenity is a luxury wellness brand built on intention — and we hold the same standard for the people behind it. We work with creatives, strategists, and storytellers who bring craft and purpose to everything they do. If that sounds like you, we'd love to be introduced.</p>
-            <a href="mailto:careers@serenityyoga.in" class="contact-link">Apply Now →</a>
             <div class="contact-email">careers@serenityyoga.in</div>
         </div>
-
         <div class="contact-divider"></div>
-
-        <div class="contact-card">
+        <div class="contact-card reveal d2">
             <div class="contact-tag">Community</div>
             <h3 class="contact-title">Join the Serenity Circle</h3>
             <p class="contact-body">Ready to begin or deepen your practice? Reach out to become part of our growing community of people choosing stillness, intention, and wellbeing.</p>
-            <a href="mailto:connect@serenityyoga.in" class="contact-link">Get Connected →</a>
             <div class="contact-email">connect@serenityyoga.in</div>
         </div>
-
         <div class="contact-divider"></div>
-
-        <div class="contact-card">
+        <div class="contact-card reveal d3">
             <div class="contact-tag">Support</div>
             <h3 class="contact-title">We're Here for You</h3>
             <p class="contact-body">Have a question, a concern, or just need a hand? Our support team is always happy to help — reach out and we'll get back to you promptly.</p>
-            <a href="mailto:support@serenityyoga.in" class="contact-link">Get Help →</a>
             <div class="contact-email">support@serenityyoga.in</div>
         </div>
-
     </div>
 </section>
 
@@ -335,5 +447,11 @@
     © 2026 Serenity Yoga &amp; Meditation Centre &nbsp;·&nbsp; serenityyoga.in
 </footer>
 
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
