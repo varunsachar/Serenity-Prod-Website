@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenity Studio — Design Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:        #FAF5EE;
+      --cream-warm:   #F5EDE0;
+      --terracotta:   #C4614A;
+      --gold:         #C9A96E;
+      --dark-brown:   #2C1A10;
+      --mid-brown:    #6B4C35;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Lato', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: #EDE8E0;
+      color: var(--dark-brown);
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .page-header .kicker {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--dark-brown);
+      line-height: 1.15;
+    }
+    .page-header .subtitle {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--mid-brown);
+      margin-top: 8px;
+      letter-spacing: 0.08em;
+    }
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+      margin: 18px auto 28px;
+    }
+
+    /* ── Layout ── */
+    .concept-layout {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── Room Illustration Panel ── */
+    .room-panel {
+      background: var(--cream);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(44,26,16,0.13);
+      position: relative;
+    }
+
+    .room-svg-wrapper {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Side Panel ── */
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .panel-card {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 22px 20px;
+      box-shadow: 0 2px 16px rgba(44,26,16,0.10);
+    }
+
+    .panel-card h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--dark-brown);
+      margin-bottom: 4px;
+    }
+    .panel-card .panel-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    /* ── Swatches ── */
+    .swatch-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .swatch-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      border: 1px solid rgba(44,26,16,0.12);
+    }
+    .swatch-info { flex: 1; }
+    .swatch-name {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--dark-brown);
+      line-height: 1.2;
+    }
+    .swatch-hex {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--mid-brown);
+    }
+    .swatch-role {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      color: #9A7A65;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Typography note ── */
+    .type-sample {
+      margin-top: 6px;
+    }
+    .type-sample .ts-serif {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--dark-brown);
+      line-height: 1;
+    }
+    .type-sample .ts-serif-sub {
+      font-family: var(--serif);
+      font-size: 0.8rem;
+      color: var(--mid-brown);
+      margin-bottom: 10px;
+    }
+    .type-sample .ts-sans {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--dark-brown);
+      letter-spacing: 0.05em;
+      line-height: 1.6;
+    }
+    .type-sample .ts-sans-sub {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      color: var(--mid-brown);
+    }
+
+    /* ── Footer note ── */
+    .foot-note {
+      text-align: center;
+      margin-top: 24px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--mid-brown);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <span class="kicker">Interior Design Concept</span>
+    <h1>Serenity Studio</h1>
+    <p class="subtitle">Brand palette applied — practice room concept</p>
+    <div class="divider"></div>
+  </header>
+
+  <div class="concept-layout">
+
+    <!-- ── ROOM ILLUSTRATION ── -->
+    <div class="room-panel">
+      <div class="room-svg-wrapper">
+        <svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" width="100%" style="display:block;">
+          <defs>
+            <!-- Floor gradient -->
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#E8D9C4"/>
+              <stop offset="100%" stop-color="#F5EDE0"/>
+            </linearGradient>
+            <!-- Left wall gradient -->
+            <linearGradient id="leftWallGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#EDE6DB"/>
+              <stop offset="100%" stop-color="#FAF5EE"/>
+            </linearGradient>
+            <!-- Ceiling gradient -->
+            <linearGradient id="ceilGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FEFAF6"/>
+              <stop offset="100%" stop-color="#F5EDE0"/>
+            </linearGradient>
+            <!-- Window light glow -->
+            <radialGradient id="windowGlow" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#FFF8E8" stop-opacity="0.95"/>
+              <stop offset="60%" stop-color="#F5E8C0" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#F5EDE0" stop-opacity="0"/>
+            </radialGradient>
+            <!-- Candle flame gradient -->
+            <radialGradient id="flameGrad" cx="50%" cy="70%" r="50%">
+              <stop offset="0%" stop-color="#FFF0A0"/>
+              <stop offset="60%" stop-color="#F5C040"/>
+              <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+            </radialGradient>
+            <!-- Shadow under mats -->
+            <filter id="matShadow" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#2C1A10" flood-opacity="0.18"/>
+            </filter>
+            <!-- Soft shadow for plants -->
+            <filter id="plantShadow">
+              <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#2C1A10" flood-opacity="0.15"/>
+            </filter>
+          </defs>
+
+          <!-- ══════════════════════════════════
+               ROOM SHELL
+          ══════════════════════════════════ -->
+
+          <!-- Ceiling -->
+          <polygon points="0,0 860,0 860,180 690,270 170,270 0,180" fill="url(#ceilGrad)"/>
+
+          <!-- Back (feature / accent) wall — terracotta -->
+          <polygon points="170,270 690,270 690,480 170,480" fill="#C4614A"/>
+
+          <!-- Left side wall -->
+          <polygon points="0,0 170,270 170,480 0,500" fill="url(#leftWallGrad)"/>
+
+          <!-- Right side wall -->
+          <polygon points="860,0 690,270 690,480 860,500" fill="#FAF5EE"/>
+
+          <!-- Floor -->
+          <polygon points="0,500 860,500 860,480 690,480 170,480 0,500" fill="url(#floorGrad)"/>
+          <polygon points="0,500 170,480 690,480 860,500 860,520 0,520" fill="url(#floorGrad)"/>
+
+          <!-- ── Floor planks (subtle horizontal lines on floor trapezoid) ── -->
+          <!-- Floor is the trapezoid: 0,500 → 170,480 → 690,480 → 860,500 → 860,520 → 0,520 -->
+          <!-- Interpolate plank lines across this area -->
+          <g stroke="#D4BFA0" stroke-width="0.6" opacity="0.55">
+            <!-- lines from left edge to right edge at different y depths -->
+            <line x1="0" y1="505" x2="860" y2="505"/>
+            <line x1="0" y1="510" x2="860" y2="510"/>
+            <line x1="0" y1="515" x2="860" y2="515"/>
+            <line x1="2"  y1="503" x2="858" y2="503"/>
+            <line x1="4"  y1="501" x2="856" y2="501"/>
+            <!-- near-floor area just above skirting, converging slightly -->
+            <line x1="15"  y1="499" x2="845" y2="499"/>
+            <line x1="35"  y1="497" x2="825" y2="497"/>
+            <line x1="60"  y1="495" x2="800" y2="495"/>
+            <line x1="85"  y1="493" x2="775" y2="493"/>
+            <line x1="108" y1="491" x2="752" y2="491"/>
+            <line x1="128" y1="489" x2="732" y2="489"/>
+            <line x1="145" y1="487" x2="715" y2="487"/>
+            <line x1="155" y1="485" x2="705" y2="485"/>
+          </g>
+
+          <!-- ── Skirting boards ── -->
+          <!-- Left wall base -->
+          <polygon points="0,494 170,478 170,480 0,500" fill="#2C1A10"/>
+          <!-- Right wall base -->
+          <polygon points="860,494 690,478 690,480 860,500" fill="#2C1A10"/>
+          <!-- Back wall base -->
+          <polygon points="170,478 690,478 690,480 170,480" fill="#2C1A10"/>
+          <!-- Ceiling–left join -->
+          <polygon points="0,0 170,270 172,270 2,0" fill="#C9A96E" opacity="0.35"/>
+          <!-- Ceiling–right join -->
+          <polygon points="860,0 690,270 688,270 858,0" fill="#C9A96E" opacity="0.35"/>
+
+          <!-- ── Gold ceiling cornice on back wall top ── -->
+          <line x1="170" y1="270" x2="690" y2="270" stroke="#C9A96E" stroke-width="2.5" opacity="0.7"/>
+          <line x1="170" y1="274" x2="690" y2="274" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+
+          <!-- ══════════════════════════════════
+               WINDOW (right wall)
+          ══════════════════════════════════ -->
+          <!-- Window frame area on right wall — right wall is a triangle: 860,0 / 690,270 / 690,480 / 860,500 -->
+          <!-- Place window mid-height on right wall, projected inward -->
+          <!-- Window recess -->
+          <polygon points="790,110 830,110 820,340 780,340" fill="#FFF8E8" opacity="0.9"/>
+          <!-- Window glow on floor/walls -->
+          <ellipse cx="760" cy="390" rx="120" ry="60" fill="url(#windowGlow)" opacity="0.7"/>
+          <!-- Window frame dark border -->
+          <polygon points="790,110 830,110 820,340 780,340" fill="none" stroke="#C9A96E" stroke-width="2"/>
+          <!-- Window cross bars -->
+          <line x1="810" y1="110" x2="800" y2="340" stroke="#C9A96E" stroke-width="1.2" opacity="0.6"/>
+          <line x1="784" y1="225" x2="826" y2="225" stroke="#C9A96E" stroke-width="1.2" opacity="0.6"/>
+          <!-- Light shafts from window onto floor -->
+          <polygon points="790,340 830,340 840,480 770,480" fill="#FFF3D0" opacity="0.2"/>
+
+          <!-- ══════════════════════════════════
+               BACK WALL DECORATIONS
+          ══════════════════════════════════ -->
+          <!-- Gold line art ornament — centred on back wall -->
+          <!-- Outer thin rectangle border -->
+          <rect x="305" y="295" width="250" height="130" fill="none" stroke="#C9A96E" stroke-width="1.2" opacity="0.55"/>
+          <!-- Inner double line -->
+          <rect x="315" y="305" width="230" height="110" fill="none" stroke="#C9A96E" stroke-width="0.7" opacity="0.4"/>
+          <!-- Central lotus-inspired line art -->
+          <!-- Stem -->
+          <line x1="430" y1="380" x2="430" y2="420" stroke="#C9A96E" stroke-width="1" opacity="0.55"/>
+          <!-- Petals — simple arcs using paths -->
+          <path d="M430,370 Q410,355 400,335 Q420,345 430,370Z" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+          <path d="M430,370 Q450,355 460,335 Q440,345 430,370Z" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+          <path d="M430,370 Q415,348 420,322 Q430,345 430,370Z" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+          <path d="M430,370 Q445,348 440,322 Q430,345 430,370Z" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+          <path d="M430,370 Q407,362 390,360 Q410,358 430,370Z" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+          <path d="M430,370 Q453,362 470,360 Q450,358 430,370Z" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+          <!-- Centre circle -->
+          <circle cx="430" cy="372" r="5" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.6"/>
+          <circle cx="430" cy="372" r="2" fill="#C9A96E" opacity="0.5"/>
+
+          <!-- Studio name on back wall (faint) -->
+          <text x="430" y="450" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif"
+                font-size="13" font-style="italic" fill="#FAF5EE" opacity="0.45" letter-spacing="3">
+            serenity
+          </text>
+
+          <!-- ══════════════════════════════════
+               YOGA MATS
+          ══════════════════════════════════ -->
+          <!-- Mat 1 — left -->
+          <g filter="url(#matShadow)">
+            <polygon points="190,462 280,458 290,478 197,478" fill="#C4614A"/>
+            <!-- Gold border -->
+            <polygon points="190,462 280,458 290,478 197,478" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.7"/>
+            <!-- Subtle mat texture lines -->
+            <line x1="210" y1="461" x2="216" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="225" y1="460" x2="231" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="240" y1="459" x2="246" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="255" y1="459" x2="261" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="270" y1="458" x2="276" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+          </g>
+
+          <!-- Mat 2 — centre -->
+          <g filter="url(#matShadow)">
+            <polygon points="360,460 480,456 490,478 368,478" fill="#C4614A"/>
+            <polygon points="360,460 480,456 490,478 368,478" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.7"/>
+            <line x1="382" y1="459" x2="388" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="400" y1="458" x2="406" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="418" y1="457" x2="424" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="436" y1="457" x2="442" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="454" y1="456" x2="461" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="470" y1="456" x2="477" y2="477" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+          </g>
+
+          <!-- Mat 3 — right -->
+          <g filter="url(#matShadow)">
+            <polygon points="555,461 665,457 672,477 562,477" fill="#C4614A"/>
+            <polygon points="555,461 665,457 672,477 562,477" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.7"/>
+            <line x1="574" y1="460" x2="580" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="590" y1="459" x2="596" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="606" y1="459" x2="612" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="622" y1="458" x2="628" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="638" y1="458" x2="644" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+            <line x1="652" y1="457" x2="658" y2="476" stroke="#A34A36" stroke-width="0.6" opacity="0.4"/>
+          </g>
+
+          <!-- ══════════════════════════════════
+               INSTRUCTOR FIGURE (front–centre)
+          ══════════════════════════════════ -->
+          <!-- Position: x≈420, standing in front of mats -->
+          <!-- Feet -->
+          <ellipse cx="415" cy="475" rx="7" ry="3" fill="#2C1A10" opacity="0.6"/>
+          <ellipse cx="435" cy="475" rx="7" ry="3" fill="#2C1A10" opacity="0.6"/>
+          <!-- Legs — dark terracotta pants -->
+          <rect x="410" y="430" width="11" height="46" rx="4" fill="#8B3D2A"/>
+          <rect x="429" y="430" width="11" height="46" rx="4" fill="#8B3D2A"/>
+          <!-- Torso — cream top -->
+          <rect x="406" y="370" width="38" height="65" rx="6" fill="#FAF5EE"/>
+          <!-- Arms -->
+          <!-- Left arm raised slightly (mountain pose suggestion) -->
+          <rect x="393" y="372" width="14" height="36" rx="6" fill="#FAF5EE" transform="rotate(-10 400 372)"/>
+          <!-- Right arm -->
+          <rect x="444" y="372" width="14" height="36" rx="6" fill="#FAF5EE" transform="rotate(10 451 372)"/>
+          <!-- Neck -->
+          <rect x="419" y="357" width="12" height="16" rx="4" fill="#D4A584"/>
+          <!-- Head -->
+          <circle cx="425" cy="347" r="18" fill="#D4A584"/>
+          <!-- Hair (dark) -->
+          <ellipse cx="425" cy="335" rx="17" ry="12" fill="#2C1A10"/>
+          <!-- Hair bun -->
+          <circle cx="425" cy="325" r="7" fill="#2C1A10"/>
+          <!-- Simple face hint — closed eyes for meditative look -->
+          <line x1="419" y1="347" x2="423" y2="348" stroke="#6B4C35" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="427" y1="348" x2="431" y2="347" stroke="#6B4C35" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Belt/waistband detail -->
+          <rect x="406" y="430" width="38" height="5" rx="2" fill="#C9A96E" opacity="0.7"/>
+
+          <!-- ══════════════════════════════════
+               PLANTS
+          ══════════════════════════════════ -->
+          <!-- Left corner plant -->
+          <g filter="url(#plantShadow)">
+            <!-- Pot -->
+            <polygon points="60,480 90,480 85,465 65,465" fill="#6B4C35"/>
+            <!-- Pot rim -->
+            <rect x="58" y="463" width="34" height="4" rx="2" fill="#8B6547"/>
+            <!-- Stems + leaves -->
+            <!-- Main stem -->
+            <line x1="75" y1="465" x2="75" y2="440" stroke="#3A5C2A" stroke-width="2.5"/>
+            <!-- Left branch -->
+            <line x1="75" y1="448" x2="55" y2="428" stroke="#3A5C2A" stroke-width="1.8"/>
+            <!-- Right branch -->
+            <line x1="75" y1="444" x2="95" y2="425" stroke="#3A5C2A" stroke-width="1.8"/>
+            <!-- Far left branch -->
+            <line x1="75" y1="442" x2="50" y2="415" stroke="#3A5C2A" stroke-width="1.4"/>
+            <!-- Leaf clusters -->
+            <ellipse cx="75" cy="436" rx="14" ry="11" fill="#4A7A38" opacity="0.9"/>
+            <ellipse cx="55" cy="425" rx="12" ry="10" fill="#3A6830" opacity="0.9"/>
+            <ellipse cx="95" cy="421" rx="12" ry="10" fill="#4A7A38" opacity="0.9"/>
+            <ellipse cx="50" cy="411" rx="9"  ry="8"  fill="#3A6830" opacity="0.8"/>
+            <ellipse cx="75" cy="422" rx="10" ry="8"  fill="#5A8A44" opacity="0.7"/>
+          </g>
+
+          <!-- Right corner plant -->
+          <g filter="url(#plantShadow)">
+            <polygon points="665,480 695,480 690,465 670,465" fill="#6B4C35"/>
+            <rect x="663" y="463" width="34" height="4" rx="2" fill="#8B6547"/>
+            <line x1="680" y1="465" x2="680" y2="435" stroke="#3A5C2A" stroke-width="2.5"/>
+            <line x1="680" y1="450" x2="658" y2="428" stroke="#3A5C2A" stroke-width="1.8"/>
+            <line x1="680" y1="445" x2="702" y2="424" stroke="#3A5C2A" stroke-width="1.8"/>
+            <line x1="680" y1="440" x2="656" y2="414" stroke="#3A5C2A" stroke-width="1.4"/>
+            <ellipse cx="680" cy="430" rx="14" ry="11" fill="#4A7A38" opacity="0.9"/>
+            <ellipse cx="658" cy="424" rx="12" ry="10" fill="#3A6830" opacity="0.9"/>
+            <ellipse cx="702" cy="420" rx="12" ry="10" fill="#4A7A38" opacity="0.9"/>
+            <ellipse cx="656" cy="410" rx="9"  ry="8"  fill="#3A6830" opacity="0.8"/>
+            <ellipse cx="680" cy="416" rx="10" ry="8"  fill="#5A8A44" opacity="0.7"/>
+          </g>
+
+          <!-- ══════════════════════════════════
+               CANDLES / INCENSE (front of back wall)
+          ══════════════════════════════════ -->
+          <!-- Candle holder shelf suggestion — gold line -->
+          <line x1="168" y1="440" x2="235" y2="440" stroke="#C9A96E" stroke-width="1.5" opacity="0.6"/>
+
+          <!-- Candle 1 -->
+          <rect x="178" y="424" width="8" height="16" rx="1.5" fill="#FAF5EE"/>
+          <rect x="179" y="423" width="6" height="3" rx="1" fill="#E8D5A0"/>
+          <!-- Wick -->
+          <line x1="182" y1="423" x2="182" y2="420" stroke="#2C1A10" stroke-width="1"/>
+          <!-- Flame -->
+          <ellipse cx="182" cy="417" rx="3.5" ry="5" fill="url(#flameGrad)" opacity="0.9"/>
+          <ellipse cx="182" cy="419" rx="1.5" ry="2.5" fill="#FFF5B0" opacity="0.8"/>
+
+          <!-- Candle 2 -->
+          <rect x="196" y="428" width="7" height="12" rx="1.5" fill="#FAF5EE"/>
+          <rect x="197" y="427" width="5" height="3" rx="1" fill="#E8D5A0"/>
+          <line x1="199" y1="427" x2="199" y2="424" stroke="#2C1A10" stroke-width="1"/>
+          <ellipse cx="199" cy="421" rx="3" ry="4.5" fill="url(#flameGrad)" opacity="0.9"/>
+          <ellipse cx="199" cy="423" rx="1.2" ry="2" fill="#FFF5B0" opacity="0.8"/>
+
+          <!-- Candle 3 (taller) -->
+          <rect x="213" y="420" width="8" height="20" rx="1.5" fill="#FAF5EE"/>
+          <rect x="214" y="419" width="6" height="3" rx="1" fill="#E8D5A0"/>
+          <line x1="217" y1="419" x2="217" y2="416" stroke="#2C1A10" stroke-width="1"/>
+          <ellipse cx="217" cy="413" rx="3.5" ry="5" fill="url(#flameGrad)" opacity="0.9"/>
+          <ellipse cx="217" cy="415" rx="1.5" ry="2.5" fill="#FFF5B0" opacity="0.8"/>
+
+          <!-- Incense stick -->
+          <line x1="228" y1="440" x2="222" y2="408" stroke="#6B4C35" stroke-width="1.2"/>
+          <!-- Smoke wisp -->
+          <path d="M224,407 Q221,400 224,393 Q227,386 224,379" fill="none" stroke="#D4BFA0" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+          <!-- Incense glow tip -->
+          <circle cx="224" cy="407" r="1.5" fill="#FF8844" opacity="0.7"/>
+
+          <!-- ══════════════════════════════════
+               ROOM LABEL ANNOTATIONS (subtle)
+          ══════════════════════════════════ -->
+          <!-- Small label: Feature Wall -->
+          <text x="430" y="288" text-anchor="middle"
+                font-family="'Lato', sans-serif" font-size="8.5"
+                fill="#FAF5EE" opacity="0.5" letter-spacing="1.5">
+            TERRACOTTA FEATURE WALL
+          </text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ── SIDE PANEL ── -->
+    <div class="side-panel">
+
+      <!-- Colour Palette -->
+      <div class="panel-card">
+        <h3>Colour Palette</h3>
+        <p class="panel-sub">Brand application</p>
+        <div class="swatch-list">
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#FAF5EE;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cream</div>
+              <div class="swatch-hex">#FAF5EE</div>
+              <div class="swatch-role">Main walls &amp; ceiling</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#F5EDE0;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cream Warm</div>
+              <div class="swatch-hex">#F5EDE0</div>
+              <div class="swatch-role">Floor &amp; warm tones</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#C4614A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Terracotta</div>
+              <div class="swatch-hex">#C4614A</div>
+              <div class="swatch-role">Feature wall &amp; mats</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#C9A96E;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gold</div>
+              <div class="swatch-hex">#C9A96E</div>
+              <div class="swatch-role">Trim &amp; decorative details</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#2C1A10;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Dark Brown</div>
+              <div class="swatch-hex">#2C1A10</div>
+              <div class="swatch-role">Wood elements &amp; skirting</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#6B4C35;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Mid Brown</div>
+              <div class="swatch-hex">#6B4C35</div>
+              <div class="swatch-role">Furniture &amp; plant pots</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch-box" style="background:#FAF5EE; border: 1.5px solid #C4614A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Instructor Top</div>
+              <div class="swatch-hex">#FAF5EE</div>
+              <div class="swatch-role">Cream top, terracotta pants</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="panel-card">
+        <h3>Typography</h3>
+        <p class="panel-sub">Font system</p>
+        <div class="type-sample">
+          <div class="ts-serif">Serenity</div>
+          <div class="ts-serif-sub">Cormorant Garamond — headings &amp; display</div>
+          <div style="height:12px;"></div>
+          <div class="ts-sans">STUDIO CONCEPT</div>
+          <div class="ts-sans-sub">Lato — labels &amp; body copy</div>
+        </div>
+      </div>
+
+      <!-- Design Notes -->
+      <div class="panel-card">
+        <h3>Design Notes</h3>
+        <p class="panel-sub">Concept rationale</p>
+        <ul style="font-family:'Lato',sans-serif; font-size:0.76rem; color:#6B4C35; line-height:1.75; padding-left:16px;">
+          <li>Terracotta accent wall grounds the space with warmth</li>
+          <li>Natural light from east-facing window</li>
+          <li>Cream &amp; warm tones maximise perceived space</li>
+          <li>Gold trim adds understated luxury</li>
+          <li>Dark timber skirting anchors the floor plane</li>
+          <li>Candle altar creates ritualistic atmosphere</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="foot-note">Serenity Yoga &amp; Meditation Centre — Studio Design Concept — 2026</p>
+</div>
+</body>
+</html>
